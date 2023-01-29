@@ -1,185 +1,121 @@
-import { useRouter } from 'next/router';
+/* eslint-disable import/no-extraneous-dependencies */
+import styled from '@emotion/styled';
+import type { NextUITheme } from '@nextui-org/react';
+import {
+  Avatar,
+  Col,
+  Container,
+  Grid,
+  Row,
+  Text,
+  useTheme,
+} from '@nextui-org/react';
 
-import { Meta } from '@/layouts/Meta';
-import { Main } from '@/templates/Main';
+import { ThemeSwitch } from '@/components/Switch';
+
+const HeadingWrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  & > label:last-of-type {
+    margin-top: 8px;
+  }
+`;
+
+const BodyWrapper = styled.div`
+  margin-top: 20px;
+  margin-bottom: 40px;
+`;
+
+const H1 = styled(Text)`
+  font-size: 3rem;
+  line-height: 3rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+`;
+
+const List = styled.ul`
+  margin-top: 10px;
+  list-style-type: disc;
+  margin: 10px 10px 10px 20px;
+`;
+const ListItem = styled.li``;
+
+const TechItem = styled.span<{ theme: NextUITheme | undefined }>`
+  padding: 0.125rem 0.5rem;
+  border-radius: 32px;
+  background-color: ${({ theme }) => theme.colors?.accents1.value};
+  font-size: 0.75rem;
+  transition: background-color 0.4s ease 0s, color 0.3s ease 0s;
+  margin-right: 8px;
+`;
 
 const Index = () => {
-  const router = useRouter();
+  // const router = useRouter();
+  const { theme } = useTheme();
 
   return (
-    <Main
-      meta={
-        <Meta
-          title="Next.js Boilerplate Presentation"
-          description="Next js Boilerplate is the perfect starter code for your project. Build your React application with the Next.js framework."
-        />
-      }
-    >
-      <a href="https://github.com/ixartz/Next-js-Boilerplate">
-        <img
-          src={`${router.basePath}/assets/images/nextjs-starter-banner.png`}
-          alt="Nextjs starter banner"
-        />
-      </a>
-      <h1 className="text-2xl font-bold">
-        Boilerplate code for your Nextjs project with Tailwind CSS
-      </h1>
-      <p>
-        <span role="img" aria-label="rocket">
-          🚀
-        </span>{' '}
-        Next.js Boilerplate is a starter code for your Next js project by
-        putting developer experience first .{' '}
-        <span role="img" aria-label="zap">
-          ⚡️
-        </span>{' '}
-        Made with Next.js, TypeScript, ESLint, Prettier, Husky, Lint-Staged,
-        VSCode, Netlify, PostCSS, Tailwind CSS.
-      </p>
-      <h2 className="text-lg font-semibold">Next js Boilerplate Features</h2>
-      <p>Developer experience first:</p>
-      <ul>
-        <li>
-          <span role="img" aria-label="fire">
-            🔥
-          </span>{' '}
-          <a href="https://nextjs.org" rel="nofollow">
-            Next.js
-          </a>{' '}
-          for Static Site Generator
-        </li>
-        <li>
-          <span role="img" aria-label="art">
-            🎨
-          </span>{' '}
-          Integrate with{' '}
-          <a href="https://tailwindcss.com" rel="nofollow">
-            Tailwind CSS
-          </a>
-        </li>
-        <li>
-          <span role="img" aria-label="nail_care">
-            💅
-          </span>{' '}
-          PostCSS for processing Tailwind CSS
-        </li>
-        <li>
-          <span role="img" aria-label="tada">
-            🎉
-          </span>{' '}
-          Type checking Typescript
-        </li>
-        <li>
-          <span role="img" aria-label="pencil2">
-            ✏️
-          </span>{' '}
-          Linter with{' '}
-          <a href="https://eslint.org" rel="nofollow">
-            ESLint
-          </a>
-        </li>
-        <li>
-          <span role="img" aria-label="hammer_and_wrench">
-            🛠
-          </span>{' '}
-          Code Formatter with{' '}
-          <a href="https://prettier.io" rel="nofollow">
-            Prettier
-          </a>
-        </li>
-        <li>
-          <span role="img" aria-label="fox_face">
-            🦊
-          </span>{' '}
-          Husky for Git Hooks
-        </li>
-        <li>
-          <span role="img" aria-label="no_entry_sign">
-            🚫
-          </span>{' '}
-          Lint-staged for running linters on Git staged files
-        </li>
-        <li>
-          <span role="img" aria-label="no_entry_sign">
-            🗂
-          </span>{' '}
-          VSCode configuration: Debug, Settings, Tasks and extension for
-          PostCSS, ESLint, Prettier, TypeScript
-        </li>
-        <li>
-          <span role="img" aria-label="robot">
-            🤖
-          </span>{' '}
-          SEO metadata, JSON-LD and Open Graph tags with Next SEO
-        </li>
-        <li>
-          <span role="img" aria-label="robot">
-            ⚙️
-          </span>{' '}
-          <a
-            href="https://www.npmjs.com/package/@next/bundle-analyzer"
-            rel="nofollow"
-          >
-            Bundler Analyzer
-          </a>
-        </li>
-        <li>
-          <span role="img" aria-label="rainbow">
-            🌈
-          </span>{' '}
-          Include a FREE minimalist theme
-        </li>
-        <li>
-          <span role="img" aria-label="hundred">
-            💯
-          </span>{' '}
-          Maximize lighthouse score
-        </li>
-      </ul>
-      <p>Built-in feature from Next.js:</p>
-      <ul>
-        <li>
-          <span role="img" aria-label="coffee">
-            ☕
-          </span>{' '}
-          Minify HTML &amp; CSS
-        </li>
-        <li>
-          <span role="img" aria-label="dash">
-            💨
-          </span>{' '}
-          Live reload
-        </li>
-        <li>
-          <span role="img" aria-label="white_check_mark">
-            ✅
-          </span>{' '}
-          Cache busting
-        </li>
-      </ul>
-      <h2 className="text-lg font-semibold">Our Stater code Philosophy</h2>
-      <ul>
-        <li>Minimal code</li>
-        <li>SEO-friendly</li>
-        <li>
-          <span role="img" aria-label="rocket">
-            🚀
-          </span>{' '}
-          Production-ready
-        </li>
-      </ul>
-      <p>
-        Check our GitHub project for more information about{' '}
-        <a href="https://github.com/ixartz/Next-js-Boilerplate">
-          Nextjs Boilerplate
-        </a>
-        . You can also browse our{' '}
-        <a href="https://creativedesignsguru.com/category/nextjs/">
-          Premium NextJS Templates
-        </a>{' '}
-        on our website to support this project.
-      </p>
-    </Main>
+    <Container css={{ padding: '$0 $10', maxWidth: '660px' }}>
+      <HeadingWrapper>
+        <H1
+          h1
+          css={{
+            textGradient: `45deg, ${theme?.colors.text.value} 10%, ${theme?.colors.primary.value} 60%`,
+          }}
+        >
+          Xin chào đây là CV của tôi!
+        </H1>
+        <ThemeSwitch />
+      </HeadingWrapper>
+      <BodyWrapper>
+        <Grid css={{ marginBottom: '$10' }}>
+          <Row align="center">
+            <Avatar
+              size="lg"
+              src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+              css={{ size: '$10', marginRight: '$5' }}
+            />
+            <Text>
+              Xin chào tôi là Fanvo, lập trình viên fullStack đến từ Việt Nam.
+              Đây là CV của tôi mọi người tham khảo ạ!
+            </Text>
+          </Row>
+        </Grid>
+        <Grid>
+          <Row align="center">
+            <Text css={{ fontSize: '$4xl' }}>Work Experience</Text>
+          </Row>
+        </Grid>
+        <Grid css={{ marginTop: '$14' }}>
+          <Row align="flex-start">
+            <Col css={{ paddingRight: '$20' }}>
+              <Text css={{ fontSize: '$2xl' }}>Foo company</Text>
+              <Text css={{ fontSize: '$1xl' }}>2021.03 ~ Web Developer</Text>
+              <Text css={{ fontSize: '$1xl' }}>
+                Foo company is social media company for every world
+              </Text>
+            </Col>
+            <Col>
+              <Text css={{ fontSize: '$2xl' }}>Foo Pay</Text>
+              <Text css={{ fontSize: '$1xl' }}>
+                2022.01 ~ Leading FE developers
+              </Text>
+              <List>
+                <ListItem>leading fe developers</ListItem>
+                <ListItem>foster SEO</ListItem>
+              </List>
+              <Row>
+                <TechItem theme={theme}>Typescript</TechItem>
+                <TechItem theme={theme}>Typescript</TechItem>
+                <TechItem theme={theme}>Typescript</TechItem>
+                <TechItem theme={theme}>Typescript</TechItem>
+              </Row>
+            </Col>
+          </Row>
+        </Grid>
+      </BodyWrapper>
+    </Container>
   );
 };
 
